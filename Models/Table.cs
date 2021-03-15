@@ -26,5 +26,6 @@ namespace CarInsurance.Models
         public int SpeedingTickets { get; set; }
         public bool CoverageType { get; set; }
         public decimal Quote { get; set; }
+        public Nullable<System.DateTime> Removed { get; set; }
     }
 }

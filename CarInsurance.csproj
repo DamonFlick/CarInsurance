@@ -157,7 +157,7 @@
       <DependentUpon>InsuranceEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\InsureeVM.cs" />
+    <Compile Include="ViewModel\InsureeVm.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Insurance.mdf" />

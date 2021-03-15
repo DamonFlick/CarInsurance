@@ -15,22 +15,33 @@ namespace CarInsurance.Controllers
         {
             using (InsuranceEntities db = new InsuranceEntities())
             {
-                var insurees = db.Tables.ToList();
+                var insurees = db.Tables.Where(x => x.Removed == null).ToList();
 
                 //ViewModel
-                var insureeVms = new List<InsureeVM>();
+                var insureeVms = new List<InsureeVm>();
                 foreach (var insuree in insurees)
                 {
-                    var insureeVM = new InsureeVM();
-                    insureeVM.Quote = insuree.Quote;
-                    insureeVM.FirstName = insuree.FirstName;
-                    insureeVM.LastName = insuree.LastName;
-                    insureeVM.EmailAddress = insuree.EmailAddress;
-                    insureeVms.Add(insureeVM);
+                    var insureeVm = new InsureeVm();
+                    insureeVm.Id = insuree.Id;
+                    insureeVm.Quote = insuree.Quote;
+                    insureeVm.FirstName = insuree.FirstName;
+                    insureeVm.LastName = insuree.LastName;
+                    insureeVm.EmailAddress = insuree.EmailAddress;
+                    insureeVms.Add(insureeVm);
                 }
 
                 return View(insureeVms);
             }            
+        }
+        public ActionResult Cancel(int Id)
+        {
+            using (InsuranceEntities db = new InsuranceEntities())
+            {
+                var signup = db.Tables.Find(Id);
+                signup.Removed = DateTime.Now;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
     }
 }

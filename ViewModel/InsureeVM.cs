@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace CarInsurance.ViewModel
+﻿namespace CarInsurance.ViewModel
 {
-    public class InsureeVM
+    public class InsureeVm
     {
+        public int Id { get; set; }
         public decimal Quote { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
